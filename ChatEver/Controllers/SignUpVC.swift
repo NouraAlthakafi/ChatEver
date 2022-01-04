@@ -13,8 +13,8 @@ class SignUpVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Create Account"
         view.backgroundColor = .white
+        title = "Create Account"
     }
 
 }

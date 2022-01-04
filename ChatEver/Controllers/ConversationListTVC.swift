@@ -12,8 +12,6 @@ class ConversationListTVC: UITableViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        title = "ChatEver"
     }
     
     // MARK: - ViewDidAppear
@@ -23,10 +21,8 @@ class ConversationListTVC: UITableViewController {
         let isLoggedIn = UserDefaults.standard.bool(forKey: "logged_in")
         
         if !isLoggedIn {
-            let vc = SignInVC()
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            present(nav, animated: false)
+            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+            self.navigationController?.pushViewController(vc, animated: false)
         }
     }
 

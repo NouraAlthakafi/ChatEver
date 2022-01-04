@@ -19,8 +19,7 @@ class SignInVC: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = .white
+
         title = "Log In"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(didTapRegister))
     }
@@ -29,13 +28,13 @@ class SignInVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //tfEmailAttributes()
+        tfEmailAttributes()
     }
     
     // MARK: - Functions
     @objc private func didTapRegister() {
-        let vc = SignUpVC()
-        navigationController?.pushViewController(vc, animated: true)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     // MARK: - Attributes Functions
