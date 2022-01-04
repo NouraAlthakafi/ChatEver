@@ -169,7 +169,7 @@
                                             <constraint firstAttribute="height" constant="30" id="dKl-Ip-bJg"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O9R-iL-pr3">
                                         <rect key="frame" x="0.0" y="45" width="382" height="30"/>
@@ -177,7 +177,7 @@
                                             <constraint firstAttribute="height" constant="30" id="ZdK-wH-yKy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" textContentType="family-name"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Er-Vx-ufl">
                                         <rect key="frame" x="0.0" y="90" width="382" height="30"/>
@@ -193,7 +193,9 @@
                                             <constraint firstAttribute="height" constant="30" id="rDw-AS-kAi"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="new-password">
+                                            <passwordRules key="passwordRules" passwordRulesDescriptor="6 characters at least"/>
+                                        </textInputTraits>
                                     </textField>
                                 </subviews>
                             </stackView>

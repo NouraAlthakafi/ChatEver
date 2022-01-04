@@ -58,7 +58,7 @@ class SignUpVC: UIViewController {
     
     // MARK: - Alerts
     func alertLogInError() {
-        let alert = UIAlertController(title: "Error", message: "Please, enter all required fields!", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: "Please, enter all required fields to create a new account!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
         present(alert, animated: true)
     }

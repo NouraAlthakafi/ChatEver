@@ -27,11 +27,6 @@ class SignInVC: UIViewController {
             alertLogInError()
             return
         }
-        
-        guard let password = tfPassword.text, password.count >= 6  else {
-                    alretPasswordError()
-                    return
-                }
         // Firebase to log in
     }
     
@@ -62,13 +57,7 @@ class SignInVC: UIViewController {
     
     // MARK: - Alerts
     func alertLogInError() {
-        let alert = UIAlertController(title: "Error", message: "Please, enter all required fields!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
-        present(alert, animated: true)
-    }
-    
-    func alretPasswordError() {
-        let alert = UIAlertController(title: "Error", message: "Password must be 6 characters at least.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error", message: "Please, enter all required fields to log in!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
