@@ -9,23 +9,27 @@
 /* Begin PBXBuildFile section */
 		C374828A2784430C007D2F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37482892784430C007D2F74 /* AppDelegate.swift */; };
 		C374828C2784430C007D2F74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374828B2784430C007D2F74 /* SceneDelegate.swift */; };
-		C374828E2784430C007D2F74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374828D2784430C007D2F74 /* ViewController.swift */; };
+		C374828E2784430C007D2F74 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374828D2784430C007D2F74 /* SignInVC.swift */; };
 		C37482912784430C007D2F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C374828F2784430C007D2F74 /* Main.storyboard */; };
 		C37482942784430C007D2F74 /* ChatEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C37482922784430C007D2F74 /* ChatEver.xcdatamodeld */; };
 		C37482962784430E007D2F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37482952784430E007D2F74 /* Assets.xcassets */; };
 		C37482992784430E007D2F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37482972784430E007D2F74 /* LaunchScreen.storyboard */; };
+		C37482A5278444A0007D2F74 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37482A4278444A0007D2F74 /* SignUpVC.swift */; };
+		C37482A727846A75007D2F74 /* ConversationListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37482A627846A75007D2F74 /* ConversationListTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C37482862784430C007D2F74 /* ChatEver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatEver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37482892784430C007D2F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C374828B2784430C007D2F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C374828D2784430C007D2F74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C374828D2784430C007D2F74 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		C37482902784430C007D2F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C37482932784430C007D2F74 /* ChatEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatEver.xcdatamodel; sourceTree = "<group>"; };
 		C37482952784430E007D2F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C37482982784430E007D2F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C374829A2784430E007D2F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C37482A4278444A0007D2F74 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		C37482A627846A75007D2F74 /* ConversationListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,50 @@
 		C37482882784430C007D2F74 /* ChatEver */ = {
 			isa = PBXGroup;
 			children = (
-				C37482892784430C007D2F74 /* AppDelegate.swift */,
-				C374828B2784430C007D2F74 /* SceneDelegate.swift */,
-				C374828D2784430C007D2F74 /* ViewController.swift */,
-				C374828F2784430C007D2F74 /* Main.storyboard */,
-				C37482952784430E007D2F74 /* Assets.xcassets */,
-				C37482972784430E007D2F74 /* LaunchScreen.storyboard */,
+				C37482A027844325007D2F74 /* Resources */,
+				C37482A2278443E4007D2F74 /* Views */,
+				C37482A1278443AE007D2F74 /* Controllers */,
 				C374829A2784430E007D2F74 /* Info.plist */,
 				C37482922784430C007D2F74 /* ChatEver.xcdatamodeld */,
 			);
 			path = ChatEver;
+			sourceTree = "<group>";
+		};
+		C37482A027844325007D2F74 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C37482892784430C007D2F74 /* AppDelegate.swift */,
+				C374828B2784430C007D2F74 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C37482A1278443AE007D2F74 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C37482A627846A75007D2F74 /* ConversationListTVC.swift */,
+				C374828D2784430C007D2F74 /* SignInVC.swift */,
+				C37482A4278444A0007D2F74 /* SignUpVC.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C37482A2278443E4007D2F74 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C37482A327844412007D2F74 /* Storyboards */,
+				C37482952784430E007D2F74 /* Assets.xcassets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C37482A327844412007D2F74 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C374828F2784430C007D2F74 /* Main.storyboard */,
+				C37482972784430E007D2F74 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C374828E2784430C007D2F74 /* ViewController.swift in Sources */,
+				C37482A727846A75007D2F74 /* ConversationListTVC.swift in Sources */,
+				C374828E2784430C007D2F74 /* SignInVC.swift in Sources */,
 				C374828A2784430C007D2F74 /* AppDelegate.swift in Sources */,
 				C374828C2784430C007D2F74 /* SceneDelegate.swift in Sources */,
 				C37482942784430C007D2F74 /* ChatEver.xcdatamodeld in Sources */,
+				C37482A5278444A0007D2F74 /* SignUpVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +338,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -325,6 +366,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
