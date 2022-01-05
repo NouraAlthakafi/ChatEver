@@ -33,7 +33,7 @@ class ConversationListTVC: UITableViewController {
     private func validateAuth() {
         if FirebaseAuth.Auth.auth().currentUser == nil {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
-            self.navigationController?.pushViewController(vc, animated: false)
+            self.present(vc, animated: false)
         }
     }
 }
