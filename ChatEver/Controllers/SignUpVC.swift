@@ -44,6 +44,11 @@ class SignUpVC: UIViewController {
         
         view.backgroundColor = .white
         title = "Create Account"
+        
+        let tappedIVProfile = UITapGestureRecognizer(target: self, action: #selector(self.presentPhotoActionSheet))
+        ivProfilePic.isUserInteractionEnabled = true
+        ivProfilePic.addGestureRecognizer(tappedIVProfile)
+        
     }
     
     // MARK: - ViewDidAppear
@@ -82,7 +87,7 @@ class SignUpVC: UIViewController {
 // MARK: - Extensions
 extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // get results of user taking picture or selecting from camera roll
-    func presentPhotoActionSheet(){
+    @objc func presentPhotoActionSheet() {
         let actionSheet = UIAlertController(title: "Profile Picture", message: "How would you like to select a picture?", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { [weak self] _ in

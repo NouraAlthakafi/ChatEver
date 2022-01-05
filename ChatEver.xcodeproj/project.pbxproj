@@ -16,7 +16,6 @@
 		C374828C2784430C007D2F74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374828B2784430C007D2F74 /* SceneDelegate.swift */; };
 		C374828E2784430C007D2F74 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374828D2784430C007D2F74 /* SignInVC.swift */; };
 		C37482912784430C007D2F74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C374828F2784430C007D2F74 /* Main.storyboard */; };
-		C37482942784430C007D2F74 /* ChatEver.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C37482922784430C007D2F74 /* ChatEver.xcdatamodeld */; };
 		C37482962784430E007D2F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37482952784430E007D2F74 /* Assets.xcassets */; };
 		C37482992784430E007D2F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37482972784430E007D2F74 /* LaunchScreen.storyboard */; };
 		C37482A5278444A0007D2F74 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37482A4278444A0007D2F74 /* SignUpVC.swift */; };
@@ -30,7 +29,6 @@
 		C374828B2784430C007D2F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C374828D2784430C007D2F74 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		C37482902784430C007D2F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C37482932784430C007D2F74 /* ChatEver.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatEver.xcdatamodel; sourceTree = "<group>"; };
 		C37482952784430E007D2F74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C37482982784430E007D2F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C374829A2784430E007D2F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				C37482A1278443AE007D2F74 /* Controllers */,
 				C374829A2784430E007D2F74 /* Info.plist */,
 				C36B23D22785C75A0001E9B6 /* GoogleService-Info.plist */,
-				C37482922784430C007D2F74 /* ChatEver.xcdatamodeld */,
 			);
 			path = ChatEver;
 			sourceTree = "<group>";
@@ -204,7 +201,6 @@
 				C374828E2784430C007D2F74 /* SignInVC.swift in Sources */,
 				C374828A2784430C007D2F74 /* AppDelegate.swift in Sources */,
 				C374828C2784430C007D2F74 /* SceneDelegate.swift in Sources */,
-				C37482942784430C007D2F74 /* ChatEver.xcdatamodeld in Sources */,
 				C37482A5278444A0007D2F74 /* SignUpVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,19 +459,6 @@
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		C37482922784430C007D2F74 /* ChatEver.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C37482932784430C007D2F74 /* ChatEver.xcdatamodel */,
-			);
-			currentVersion = C37482932784430C007D2F74 /* ChatEver.xcdatamodel */;
-			path = ChatEver.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C374827E2784430C007D2F74 /* Project object */;
 }
