@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C36B23C92785C2FC0001E9B6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23C82785C2FC0001E9B6 /* FirebaseAnalytics */; };
+		C36B23CB2785C2FC0001E9B6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23CA2785C2FC0001E9B6 /* FirebaseAuth */; };
+		C36B23CD2785C2FC0001E9B6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23CC2785C2FC0001E9B6 /* FirebaseDatabase */; };
+		C36B23CF2785C2FC0001E9B6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23CE2785C2FC0001E9B6 /* FirebaseStorage */; };
+		C36B23D32785C75A0001E9B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36B23D22785C75A0001E9B6 /* GoogleService-Info.plist */; };
 		C374828A2784430C007D2F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37482892784430C007D2F74 /* AppDelegate.swift */; };
 		C374828C2784430C007D2F74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374828B2784430C007D2F74 /* SceneDelegate.swift */; };
 		C374828E2784430C007D2F74 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374828D2784430C007D2F74 /* SignInVC.swift */; };
@@ -19,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C36B23D22785C75A0001E9B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C37482862784430C007D2F74 /* ChatEver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatEver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37482892784430C007D2F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C374828B2784430C007D2F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +43,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C36B23CD2785C2FC0001E9B6 /* FirebaseDatabase in Frameworks */,
+				C36B23CF2785C2FC0001E9B6 /* FirebaseStorage in Frameworks */,
+				C36B23C92785C2FC0001E9B6 /* FirebaseAnalytics in Frameworks */,
+				C36B23CB2785C2FC0001E9B6 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +76,7 @@
 				C37482A2278443E4007D2F74 /* Views */,
 				C37482A1278443AE007D2F74 /* Controllers */,
 				C374829A2784430E007D2F74 /* Info.plist */,
+				C36B23D22785C75A0001E9B6 /* GoogleService-Info.plist */,
 				C37482922784430C007D2F74 /* ChatEver.xcdatamodeld */,
 			);
 			path = ChatEver;
@@ -124,6 +135,12 @@
 			dependencies = (
 			);
 			name = ChatEver;
+			packageProductDependencies = (
+				C36B23C82785C2FC0001E9B6 /* FirebaseAnalytics */,
+				C36B23CA2785C2FC0001E9B6 /* FirebaseAuth */,
+				C36B23CC2785C2FC0001E9B6 /* FirebaseDatabase */,
+				C36B23CE2785C2FC0001E9B6 /* FirebaseStorage */,
+			);
 			productName = ChatEver;
 			productReference = C37482862784430C007D2F74 /* ChatEver.app */;
 			productType = "com.apple.product-type.application";
@@ -152,6 +169,9 @@
 				Base,
 			);
 			mainGroup = C374827D2784430C007D2F74;
+			packageReferences = (
+				C36B23C72785C2FC0001E9B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = C37482872784430C007D2F74 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -167,6 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C37482992784430E007D2F74 /* LaunchScreen.storyboard in Resources */,
+				C36B23D32785C75A0001E9B6 /* GoogleService-Info.plist in Resources */,
 				C37482962784430E007D2F74 /* Assets.xcassets in Resources */,
 				C37482912784430C007D2F74 /* Main.storyboard in Resources */,
 			);
@@ -335,6 +356,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChatEver/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -346,7 +369,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = NorahAlthakafi.ChatEver;
+				PRODUCT_BUNDLE_IDENTIFIER = com.norahAlthakafi.ChatEver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -363,6 +386,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChatEver/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo for your profile.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -374,7 +399,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = NorahAlthakafi.ChatEver;
+				PRODUCT_BUNDLE_IDENTIFIER = com.norahAlthakafi.ChatEver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -404,6 +429,40 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C36B23C72785C2FC0001E9B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C36B23C82785C2FC0001E9B6 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C36B23C72785C2FC0001E9B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		C36B23CA2785C2FC0001E9B6 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C36B23C72785C2FC0001E9B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		C36B23CC2785C2FC0001E9B6 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C36B23C72785C2FC0001E9B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		C36B23CE2785C2FC0001E9B6 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C36B23C72785C2FC0001E9B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		C37482922784430C007D2F74 /* ChatEver.xcdatamodeld */ = {

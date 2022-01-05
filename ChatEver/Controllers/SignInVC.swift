@@ -52,7 +52,7 @@ class SignInVC: UIViewController {
     // MARK: - Functions
     @objc private func didTapRegister() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - Alerts

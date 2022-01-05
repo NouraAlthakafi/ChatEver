@@ -127,4 +127,3 @@ extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
     }
     
 }
-
