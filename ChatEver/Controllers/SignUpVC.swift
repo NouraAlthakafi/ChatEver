@@ -37,13 +37,22 @@ class SignUpVC: UIViewController {
                     return
                 }
         // Firebase to create account
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
-            guard let result = authResult, error == nil else {
-                print("User Creating Error: \(String(describing: error?.localizedDescription))")
+        DatabaseManager.shared.validateUserExistence(with: email, completion: { [weak self] exists in
+            guard let strongSelf = self else { return }
+            guard !exists else {
+                strongSelf.alretUserExist()
                 return
             }
-            let user = result.user
-            print("\(user) Created Success!")
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+                guard authResult != nil, error == nil else {
+                    print("User Creating Error: \(String(describing: error?.localizedDescription))")
+                    return
+                }
+                
+                DatabaseManager.shared.insertUser(with: ChatEverUser(firstName: firstName, lastName: lastName, email: email))
+                
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            })
         })
     }
     
@@ -71,6 +80,12 @@ class SignUpVC: UIViewController {
     }
     
     // MARK: - Alerts
+    func alretUserExist() {
+        let alert = UIAlertController(title: "Error", message: "This account is already registered!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+        present(alert, animated: true)
+    }
+    
     func alertLogInError() {
         let alert = UIAlertController(title: "Error", message: "Please, enter all required fields to create a new account!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))

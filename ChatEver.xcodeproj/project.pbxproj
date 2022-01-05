@@ -12,6 +12,7 @@
 		C36B23CD2785C2FC0001E9B6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23CC2785C2FC0001E9B6 /* FirebaseDatabase */; };
 		C36B23CF2785C2FC0001E9B6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23CE2785C2FC0001E9B6 /* FirebaseStorage */; };
 		C36B23D32785C75A0001E9B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C36B23D22785C75A0001E9B6 /* GoogleService-Info.plist */; };
+		C36B23D52785FFEC0001E9B6 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36B23D42785FFEC0001E9B6 /* DatabaseManager.swift */; };
 		C374828A2784430C007D2F74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37482892784430C007D2F74 /* AppDelegate.swift */; };
 		C374828C2784430C007D2F74 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374828B2784430C007D2F74 /* SceneDelegate.swift */; };
 		C374828E2784430C007D2F74 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374828D2784430C007D2F74 /* SignInVC.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		C36B23D22785C75A0001E9B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C36B23D42785FFEC0001E9B6 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C37482862784430C007D2F74 /* ChatEver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatEver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37482892784430C007D2F74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C374828B2784430C007D2F74 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				C37482892784430C007D2F74 /* AppDelegate.swift */,
 				C374828B2784430C007D2F74 /* SceneDelegate.swift */,
+				C36B23D42785FFEC0001E9B6 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 			files = (
 				C37482A727846A75007D2F74 /* ConversationListTVC.swift in Sources */,
 				C374828E2784430C007D2F74 /* SignInVC.swift in Sources */,
+				C36B23D52785FFEC0001E9B6 /* DatabaseManager.swift in Sources */,
 				C374828A2784430C007D2F74 /* AppDelegate.swift in Sources */,
 				C374828C2784430C007D2F74 /* SceneDelegate.swift in Sources */,
 				C37482A5278444A0007D2F74 /* SignUpVC.swift in Sources */,
