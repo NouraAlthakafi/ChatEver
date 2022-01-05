@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignInVC: UIViewController {
     
@@ -28,6 +29,15 @@ class SignInVC: UIViewController {
             return
         }
         // Firebase to log in
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: { authResult, error in
+            guard let result = authResult, error == nil else {
+                print("User Log in Error with Email: \(email)")
+                return
+            }
+            
+            let user = result.user
+            print("\(user) Logged in Success!")
+        })
     }
     
     @IBAction func btnFacebookAction(_ sender: UIButton) {

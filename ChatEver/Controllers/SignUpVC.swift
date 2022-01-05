@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpVC: UIViewController {
     
@@ -35,7 +36,15 @@ class SignUpVC: UIViewController {
                     alretPasswordError()
                     return
                 }
-        // Firebase to log in
+        // Firebase to create account
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+            guard let result = authResult, error == nil else {
+                print("User Creating Error: \(String(describing: error?.localizedDescription))")
+                return
+            }
+            let user = result.user
+            print("\(user) Created Success!")
+        })
     }
     
     // MARK: - LifeCycle
