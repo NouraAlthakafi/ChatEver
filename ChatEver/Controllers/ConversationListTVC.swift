@@ -13,11 +13,11 @@ class ConversationListTVC: UITableViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
+        /*do {
             try FirebaseAuth.Auth.auth().signOut()
         } catch {
             print(error.localizedDescription)
-        }
+        }*/
     }
     
     // MARK: - ViewDidAppear
