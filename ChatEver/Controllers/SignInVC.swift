@@ -19,7 +19,6 @@ class SignInVC: UIViewController {
     
     // MARK: - Actions
     @IBAction func btnLogInAction(_ sender: UIButton) {
-        
         // closing keyboard
         tfEmail.resignFirstResponder()
         tfPassword.resignFirstResponder()
@@ -28,6 +27,7 @@ class SignInVC: UIViewController {
             alertLogInError()
             return
         }
+        
         // Firebase to log in
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] authResult, error in
             guard let strongSelf = self else { return }
@@ -64,9 +64,10 @@ class SignInVC: UIViewController {
     // MARK: - Functions
     @objc private func didTapRegister() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
-        let nav = UINavigationController(rootViewController: vc)
+        self.navigationController?.pushViewController(vc, animated: false)
+        /*let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .fullScreen
-        self.present(nav, animated: false)
+        self.present(nav, animated: false)*/
     }
     
     // MARK: - Alerts

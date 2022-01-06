@@ -20,7 +20,6 @@ class SignUpVC: UIViewController {
     
     // MARK: - Actions
     @IBAction func btnRegisterAction(_ sender: UIButton) {
-
         // closing keyboard
         tfFirstName.resignFirstResponder()
         tfLastName.resignFirstResponder()
@@ -36,13 +35,16 @@ class SignUpVC: UIViewController {
                     alretPasswordError()
                     return
                 }
+        
         // Firebase to create account
         DatabaseManager.shared.validateUserExistence(with: email, completion: { [weak self] exists in
             guard let strongSelf = self else { return }
+            
             guard !exists else {
                 strongSelf.alretUserExist()
                 return
             }
+            
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
                 guard authResult != nil, error == nil else {
                     print("User Creating Error: \(String(describing: error?.localizedDescription))")

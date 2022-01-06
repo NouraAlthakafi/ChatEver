@@ -13,6 +13,11 @@ class ConversationListTVC: UITableViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            try FirebaseAuth.Auth.auth().signOut()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     // MARK: - ViewDidAppear
@@ -33,7 +38,9 @@ class ConversationListTVC: UITableViewController {
     private func validateAuth() {
         if FirebaseAuth.Auth.auth().currentUser == nil {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
-            self.present(vc, animated: false)
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: false)
         }
     }
 }
