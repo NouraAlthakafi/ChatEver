@@ -61,7 +61,26 @@ class SignUpVC: UIViewController {
                     return
                 }
                 
-                DatabaseManager.shared.insertUser(with: ChatEverUser(firstName: firstName, lastName: lastName, email: email))
+                let chatEverUser = ChatEverUser(firstName: firstName, lastName: lastName, email: email)
+                DatabaseManager.shared.insertUser(with: chatEverUser, completion: { success in
+                    if success {
+                        // upload profile picture
+                        guard let picture = strongSelf.ivProfilePic.image,
+                              let data = picture.pngData() else {
+                                  return
+                              }
+                        let fileName = chatEverUser.profilePic
+                        StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName, completion: { result in
+                            switch result {
+                            case.success(let downloadUrl):
+                                UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                                print(downloadUrl)
+                            case.failure(let error):
+                                print("Storage Manager Error \(error)")
+                            }
+                        })
+                    }
+                })
                 
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })
