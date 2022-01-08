@@ -7,8 +7,12 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class SignInVC: UIViewController {
+    
+    // MARK: - Tools
+    private let spinner = JGProgressHUD(style: .dark)
     
     // MARK: - Outlets
     @IBOutlet weak var ivLogo: UIImageView!
@@ -28,9 +32,16 @@ class SignInVC: UIViewController {
             return
         }
         
+        spinner.show(in: view)
+        
         // Firebase to log in
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] authResult, error in
             guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+            }
+            
             guard let result = authResult, error == nil else {
                 print("User Log in Error with Email: \(email)")
                 return
@@ -50,7 +61,7 @@ class SignInVC: UIViewController {
         super.viewDidLoad()
 
         title = "Log In"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(didTapRegister))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(tappedRegister))
     }
     
     // MARK: - ViewDidAppear
@@ -62,7 +73,7 @@ class SignInVC: UIViewController {
     }
     
     // MARK: - Functions
-    @objc private func didTapRegister() {
+    @objc private func tappedRegister() {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignUpVC") as! SignUpVC
         self.navigationController?.pushViewController(vc, animated: false)
         /*let nav = UINavigationController(rootViewController: vc)

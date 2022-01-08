@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="IBZ-bb-AR0">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellFriend" id="IBZ-bb-AR0">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IBZ-bb-AR0" id="DEg-aT-PLN">
@@ -249,10 +249,10 @@
             </objects>
             <point key="canvasLocation" x="3381.1594202898555" y="97.767857142857139"/>
         </scene>
-        <!--View Controller-->
+        <!--MessagesVC-->
         <scene sceneID="EVn-Qq-f8m">
             <objects>
-                <viewController id="hIr-WI-1T1" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatVC" id="hIr-WI-1T1" customClass="MessagesVC" customModule="ChatEver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Nr-YL-9vl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -264,33 +264,20 @@
             </objects>
             <point key="canvasLocation" x="4036.2318840579715" y="97.767857142857139"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="SP0-hO-gRS">
+        <!--New ConversationVC-->
+        <scene sceneID="krd-fa-9t2">
             <objects>
-                <tableViewController id="V2P-ac-bGz" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="uFE-km-NUA">
+                <viewController storyboardIdentifier="NewConversationVC" id="WSH-29-2jQ" customClass="NewConversationVC" customModule="ChatEver" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tOE-Hd-Unx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="gud-zZ-KtW"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="OFv-zi-J0Q">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OFv-zi-J0Q" id="Ke4-iU-kfP">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="V2P-ac-bGz" id="fdU-1r-kcO"/>
-                            <outlet property="delegate" destination="V2P-ac-bGz" id="iMQ-FR-ODp"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cUq-Ck-R3y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8JW-DW-QML" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4694.202898550725" y="97.767857142857139"/>
+            <point key="canvasLocation" x="4694" y="98"/>
         </scene>
         <!--Settings-->
         <scene sceneID="kXT-VV-HXP">
@@ -385,6 +372,7 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="ks6-EA-5Xm"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EyQ-Lj-2ot">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

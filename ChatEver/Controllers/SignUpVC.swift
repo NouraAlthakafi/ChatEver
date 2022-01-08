@@ -7,8 +7,12 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class SignUpVC: UIViewController {
+    
+    // MARK: - Tools
+    private let spinner = JGProgressHUD(style: .dark)
     
     // MARK: - Outlets
     @IBOutlet weak var ivProfilePic: UIImageView!
@@ -36,9 +40,15 @@ class SignUpVC: UIViewController {
                     return
                 }
         
+        spinner.show(in: view)
+        
         // Firebase to create account
         DatabaseManager.shared.validateUserExistence(with: email, completion: { [weak self] exists in
             guard let strongSelf = self else { return }
+            
+            DispatchQueue.main.async {
+                strongSelf.spinner.dismiss()
+            }
             
             guard !exists else {
                 strongSelf.alretUserExist()
