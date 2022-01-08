@@ -29,10 +29,10 @@ class NewConversationVC: UIViewController {
         return tableUsers
     }()
     
-    private let lbResult: UILabel = {
+    private let label: UILabel = {
         let lbResult = UILabel()
         lbResult.isHidden = true
-        lbResult.text = "No Results Found"
+        lbResult.text = "No Results Found!"
         lbResult.textAlignment = .center
         lbResult.textColor = .gray
         lbResult.font = .systemFont(ofSize: 25, weight: .medium)

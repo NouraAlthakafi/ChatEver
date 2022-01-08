@@ -15,6 +15,7 @@
 		C31EAE86278969A400BFFD43 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C31EAE85278969A400BFFD43 /* SDWebImageMapKit */; };
 		C31EAE8A27896D6100BFFD43 /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAE8927896D6100BFFD43 /* MessagesVC.swift */; };
 		C31EAE8E27897C6E00BFFD43 /* NewConversationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAE8D27897C6E00BFFD43 /* NewConversationVC.swift */; };
+		C31EAE91278A2E4600BFFD43 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C31EAE90278A2E4600BFFD43 /* FacebookLogin */; };
 		C36B23C92785C2FC0001E9B6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23C82785C2FC0001E9B6 /* FirebaseAnalytics */; };
 		C36B23CB2785C2FC0001E9B6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23CA2785C2FC0001E9B6 /* FirebaseAuth */; };
 		C36B23CD2785C2FC0001E9B6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23CC2785C2FC0001E9B6 /* FirebaseDatabase */; };
@@ -60,6 +61,7 @@
 				C36B23CF2785C2FC0001E9B6 /* FirebaseStorage in Frameworks */,
 				C31EAE7E2789693200BFFD43 /* MessageKit in Frameworks */,
 				C31EAE812789696000BFFD43 /* JGProgressHUD in Frameworks */,
+				C31EAE91278A2E4600BFFD43 /* FacebookLogin in Frameworks */,
 				C36B23C92785C2FC0001E9B6 /* FirebaseAnalytics in Frameworks */,
 				C31EAE86278969A400BFFD43 /* SDWebImageMapKit in Frameworks */,
 				C31EAE84278969A400BFFD43 /* SDWebImage in Frameworks */,
@@ -167,6 +169,7 @@
 				C31EAE802789696000BFFD43 /* JGProgressHUD */,
 				C31EAE83278969A400BFFD43 /* SDWebImage */,
 				C31EAE85278969A400BFFD43 /* SDWebImageMapKit */,
+				C31EAE90278A2E4600BFFD43 /* FacebookLogin */,
 			);
 			productName = ChatEver;
 			productReference = C37482862784430C007D2F74 /* ChatEver.app */;
@@ -202,6 +205,7 @@
 				C31EAE7C2789693200BFFD43 /* XCRemoteSwiftPackageReference "MessageKit" */,
 				C31EAE7F2789696000BFFD43 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 				C31EAE82278969A400BFFD43 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				C31EAE8F278A2E4500BFFD43 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = C37482872784430C007D2F74 /* Products */;
 			projectDirPath = "";
@@ -497,6 +501,14 @@
 				kind = branch;
 			};
 		};
+		C31EAE8F278A2E4500BFFD43 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		C36B23C72785C2FC0001E9B6 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -537,6 +549,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C31EAE82278969A400BFFD43 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImageMapKit;
+		};
+		C31EAE90278A2E4600BFFD43 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C31EAE8F278A2E4500BFFD43 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
 		};
 		C36B23C82785C2FC0001E9B6 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
