@@ -75,7 +75,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aLg-xC-sNJ">
-                                <rect key="frame" x="50" y="503" width="314" height="83"/>
+                                <rect key="frame" x="50" y="503" width="314" height="31.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKS-y0-PBQ">
                                         <rect key="frame" x="0.0" y="0.0" width="314" height="31.5"/>
@@ -97,26 +97,6 @@
                                             <action selector="btnLogInAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g4L-Kw-qII"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFa-D8-42I">
-                                        <rect key="frame" x="0.0" y="51.5" width="314" height="31.5"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled">
-                                            <backgroundConfiguration key="background" cornerRadius="10">
-                                                <color key="backgroundColor" systemColor="linkColor"/>
-                                            </backgroundConfiguration>
-                                            <attributedString key="attributedTitle">
-                                                <fragment content="Continue with Facebook">
-                                                    <attributes>
-                                                        <font key="NSFont" size="15" name="Helvetica-Bold"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="btnFacebookAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6VL-fd-kCu"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -135,7 +115,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="btnFacebook" destination="GFa-D8-42I" id="1S9-Qa-7pS"/>
                         <outlet property="btnLogIn" destination="OKS-y0-PBQ" id="Dq7-F3-RvU"/>
                         <outlet property="ivLogo" destination="Q4o-81-hhH" id="Bkd-eM-fvF"/>
                         <outlet property="tfEmail" destination="Owc-If-DIN" id="G9v-VO-NZv"/>

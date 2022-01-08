@@ -8,18 +8,28 @@
 import UIKit
 import FirebaseAuth
 import JGProgressHUD
+import FBSDKLoginKit
 
 class SignInVC: UIViewController {
     
     // MARK: - Tools
     private let spinner = JGProgressHUD(style: .dark)
     
+    // MARK: - UI Design
+    private let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.clipsToBounds = true
+        return scrollView
+    }()
+    
     // MARK: - Outlets
     @IBOutlet weak var ivLogo: UIImageView!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
     @IBOutlet weak var btnLogIn: UIButton!
-    @IBOutlet weak var btnFacebook: UIButton!
+    
+    // FaceBook
+    private let loginButton = FBLoginButton()
     
     // MARK: - Actions
     @IBAction func btnLogInAction(_ sender: UIButton) {
@@ -53,15 +63,15 @@ class SignInVC: UIViewController {
         })
     }
     
-    @IBAction func btnFacebookAction(_ sender: UIButton) {
-    }
-    
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = "Log In"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(tappedRegister))
+        
+        // Add Subviews
+        view.addSubview(loginButton)
     }
     
     // MARK: - ViewDidAppear
@@ -70,6 +80,10 @@ class SignInVC: UIViewController {
         
         tfAttributes(tf: tfEmail)
         tfAttributes(tf: tfPassword)
+        
+        loginButton.center = scrollView.center
+        loginButton.frame.origin.x = loginButton.left+160
+        loginButton.frame.origin.y = loginButton.bottom+370
     }
     
     // MARK: - Functions

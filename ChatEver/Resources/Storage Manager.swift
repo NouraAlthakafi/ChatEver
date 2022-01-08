@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseStorage
 
-final class StorageManager{
+final class StorageManager {
     
     // MARK: - Variables
     static let shared = StorageManager()
@@ -18,11 +18,12 @@ final class StorageManager{
     // MARK: - Functions
     public func uploadProfilePicture(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
         storage.child("image/\(fileName)").putData(data, metadata: nil, completion: { metadata, error in
+            
             guard error == nil else {
-                
                 // if failed
                 print("Image Upload Failed \(error?.localizedDescription)")
                 completion(.failure(StorageErorr.faildToUpload))
+                
                 return
             }
             
@@ -30,6 +31,7 @@ final class StorageManager{
                 guard let url = url else {
                     print("Url Download Failed \(error?.localizedDescription)")
                     completion(.failure(StorageErorr.faildToGetDownloadUrl))
+                    
                return
                 }
                 
@@ -37,7 +39,6 @@ final class StorageManager{
                 print("Download Url returned: \(urlString)")
                 completion(.success(urlString))
             })
-            
         })
     }
     
