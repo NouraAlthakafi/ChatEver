@@ -81,7 +81,7 @@ class SignUpVC: UIViewController {
                         })
                     }
                 })
-                
+                UserDefaults.standard.setValue(email, forKey: "email")
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })
         })

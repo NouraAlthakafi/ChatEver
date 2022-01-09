@@ -17,11 +17,9 @@ class ConversationListTVC: UITableViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*do {
-            try FirebaseAuth.Auth.auth().signOut()
-        } catch {
-            print(error.localizedDescription)
-        }*/
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                                    target: self,
+                                                                    action: #selector(tappedAdd))
     }
     
     // MARK: - ViewDidAppear
@@ -29,7 +27,7 @@ class ConversationListTVC: UITableViewController {
         super.viewDidAppear(animated)
         
         validateAuth()
-        allConvorsations()
+        getAllConvorsations()
     }
 
     // MARK: - TableView Functions
@@ -59,6 +57,12 @@ class ConversationListTVC: UITableViewController {
     }
     
     // MARK: - Functions
+    @objc private func tappedAdd() {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewConversationVC") as! NewConversationVC
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true)
+    }
+    
     private func validateAuth() {
         if FirebaseAuth.Auth.auth().currentUser == nil {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
@@ -68,7 +72,7 @@ class ConversationListTVC: UITableViewController {
         }
     }
     
-    private func allConvorsations() {
+    private func getAllConvorsations() {
         // firebase to restore
     }
 }

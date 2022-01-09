@@ -55,8 +55,9 @@ class NewConversationVC: UIViewController {
         navigationController?.navigationBar.topItem?.titleView = searchBar
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(tappedCancel))
         
-        view.addSubview(label)
+        // add subviews
         view.addSubview(tableView)
+        view.addSubview(label)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -74,7 +75,7 @@ class NewConversationVC: UIViewController {
     @objc private func tappedCancel() {
         dismiss(animated: true, completion: nil)
     }
-}
+} // end class NewConversation
 
 // MARK: - Extensions
 extension NewConversationVC: UISearchBarDelegate {
@@ -82,15 +83,11 @@ extension NewConversationVC: UISearchBarDelegate {
     // MARK: - Functions
     func searchBarButtonClicked(_ searchBar: UISearchBar) {
         guard let input = searchBar.text, !input.replacingOccurrences(of: " ", with: "").isEmpty else { return }
-        
-        searchUsers(query: input)
-        
-        spinner.show(in: view)
-        
-        results.removeAll()
-
         searchBar.resignFirstResponder()
-    }
+        results.removeAll()
+        spinner.show(in: view)
+        searchUsers(query: input)
+    } // end function searchBarButtonClicked
     
     func searchUsers(query: String) {
         // check users exist
@@ -102,11 +99,12 @@ extension NewConversationVC: UISearchBarDelegate {
                 DatabaseManager.shared.getAllUsers(completion: { [weak self] result in
                     switch result {
                     case .success(let usersCollection):
+                        print("Fetch Success!")
+                        self?.fetchedUsers = true
                         self?.users = usersCollection
                         self?.filterSearchUsersResult(with: query)
-                        self?.fetchedUsers = true
                     case .failure(let error):
-                        print("Usres Get Failed: \(error)")
+                        print("Get Usres Failed: \(error)")
                     }
                 })
             }
@@ -116,7 +114,7 @@ extension NewConversationVC: UISearchBarDelegate {
         guard fetchedUsers else { return }
         self.spinner.dismiss()
         let results: [[String: String]] = self.users.filter({
-            guard let name = $0["Name"]?.lowercased() else {
+            guard let name = $0["name"]?.lowercased() else {
                 return false
             }
             return name.hasPrefix(term.lowercased())
