@@ -159,11 +159,11 @@ extension MessagesVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDispla
                         return
                     }
 
-                    let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+                    let safeEmail = DatabaseManager.emailCorrector(email: email)
                     let path = "image/\(safeEmail)_profile_picture.png"
 
                     // fetch url
-                    StorageManager.shared.downloadURL(for: path, completion: { [weak self] result in
+                    StorageManager.shared.downloadImageURL(for: path, completion: { [weak self] result in
                         switch result {
                         case .success(let url):
                             self?.senderPhotoURL = url
@@ -185,11 +185,11 @@ extension MessagesVC: MessagesDataSource, MessagesLayoutDelegate, MessagesDispla
                     // fetch url
                     let email = self.otherUserEmail
 
-                    let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+                    let safeEmail = DatabaseManager.emailCorrector(email: email)
                     let path = "image/\(safeEmail)_profile_picture.png"
 
                     // fetch url
-                    StorageManager.shared.downloadURL(for: path, completion: { [weak self] result in
+                    StorageManager.shared.downloadImageURL(for: path, completion: { [weak self] result in
                         switch result {
                         case .success(let url):
                             self?.otherUserPhotoURL = url
@@ -223,7 +223,7 @@ extension MessagesVC: InputBarAccessoryViewDelegate {
         if isNewConversation {
             // create convo in database
             
-            DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage, completion: { [weak self]success in
+            DatabaseManager.shared.createNewConversation(with: otherUserEmail, nameFull: self.title ?? "User", firstMessage: mmessage, completion: { [weak self]success in
                 if success {
                     print("message sent")
                 }
