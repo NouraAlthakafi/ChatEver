@@ -50,12 +50,14 @@ class ProfileVC: UIViewController {
         }
         
         let emailCorrector = DatabaseManager.emailCorrector(email: email)
-        let filename = emailCorrector + "_profile_picture.png"
-        let path = "image/"+filename
+        let fileName = emailCorrector + "_profile_picture.png"
+        let path = "image/\(fileName)"
         StorageManager.shared.downloadImageURL(for: path, completion: { result in
             switch result {
             case .success(let url):
-                self.ivProfilePic.sd_setImage(with: url, completed: nil)
+                DispatchQueue.main.async {
+                    self.ivProfilePic.sd_setImage(with: url, completed: nil)
+                }
             case .failure(let error):
                 print("Download Url Failed: \(error)")
             }

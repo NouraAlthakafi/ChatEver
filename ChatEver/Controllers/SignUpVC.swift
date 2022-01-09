@@ -98,6 +98,11 @@ class SignUpVC: UIViewController {
         ivProfilePic.isUserInteractionEnabled = true
         ivProfilePic.addGestureRecognizer(tappedIVProfile)
         
+        // Image Attributes
+        ivProfilePic.layer.borderColor = UIColor.white.cgColor
+        ivProfilePic.layer.borderWidth = 3
+        ivProfilePic.layer.masksToBounds = true
+        ivProfilePic.layer.cornerRadius = ivProfilePic.frame.size.width/2
     }
     
     // MARK: - ViewDidAppear
