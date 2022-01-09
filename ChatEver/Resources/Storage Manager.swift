@@ -21,7 +21,7 @@ final class StorageManager {
             
             guard error == nil else {
                 // if failed
-                print("Image Upload Failed \(error?.localizedDescription)")
+                print("Image Upload Failed \(String(describing: error?.localizedDescription))")
                 completion(.failure(StorageErorrs.faildToUpload))
                 
                 return
@@ -29,7 +29,7 @@ final class StorageManager {
             
             self.storage.child("image/\(fileName)").downloadURL(completion: {url, error in
                 guard let url = url else {
-                    print("Url Download Failed \(error?.localizedDescription)")
+                    print("Url Download Failed \(String(describing: error?.localizedDescription))")
                     completion(.failure(StorageErorrs.faildToGetDownloadUrl))
                     
                return
@@ -40,18 +40,18 @@ final class StorageManager {
                 completion(.success(urlString))
             })
         })
-    }
+    } // end of uploadProfilePicture
     
     public func downloadImageURL(for path: String, completion: @escaping (Result<URL, Error>) -> Void) {
             let reference = storage.child(path)
-            reference.downloadURL(completion: { url, error in
+            reference.downloadURL { url, error in
                 guard let url = url, error == nil else {
                     completion(.failure(StorageErorrs.faildToGetDownloadUrl))
                     return
                 }
                 completion(.success(url))
-            })
-        }
+            }
+        } // end of downloadImageURL
     
     // MARK: - Enums
     public enum StorageErorrs : Error {

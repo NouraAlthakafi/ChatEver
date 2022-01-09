@@ -99,6 +99,7 @@ extension DatabaseManager {
     public func getAllUsers(completion: @escaping (Result<[[String: String]], Error>) -> Void) {
         database.child("users").observeSingleEvent(of: .value, with: { snapshot in
             guard let value = snapshot.value as? [[String: String]] else {
+                print(99)
                 completion(.failure(DatabseErrors.failedToFetch))
                 return
             }
@@ -526,7 +527,7 @@ extension DatabaseManager {
                 }
             } // end of deleteConversation
     
-    public func conversationExists(iwth targetRecipientEmail: String, completion: @escaping (Result<String, Error>) -> Void) {
+    public func conversationExists(with targetRecipientEmail: String, completion: @escaping (Result<String, Error>) -> Void) {
                 let safeRecipientEmail = DatabaseManager.emailCorrector(email: targetRecipientEmail)
                 guard let senderEmail = UserDefaults.standard.value(forKey: "email") as? String else {
                     return

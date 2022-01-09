@@ -7,8 +7,9 @@
 
 import UIKit
 import FirebaseAuth
-import JGProgressHUD
 import FBSDKLoginKit
+import FacebookLogin
+import JGProgressHUD
 
 class SignInVC: UIViewController {
     

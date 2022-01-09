@@ -35,7 +35,7 @@ class NewConversationVC: UIViewController {
         lbResult.text = "No Results Found!"
         lbResult.textAlignment = .center
         lbResult.textColor = .gray
-        lbResult.font = .systemFont(ofSize: 25, weight: .medium)
+        lbResult.font = .systemFont(ofSize: 20, weight: .medium)
         
         return lbResult
     }()
@@ -44,11 +44,12 @@ class NewConversationVC: UIViewController {
     private var users = [[String: String]]()
     private var results = [[String: String]]()
     private var fetchedUsers = false
+    public var completion: ((SearchResult) -> (Void))?
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         searchBar.delegate = self
         searchBar.becomeFirstResponder()
         
@@ -81,34 +82,39 @@ class NewConversationVC: UIViewController {
 extension NewConversationVC: UISearchBarDelegate {
     
     // MARK: - Functions
-    func searchBarButtonClicked(_ searchBar: UISearchBar) {
-        guard let input = searchBar.text, !input.replacingOccurrences(of: " ", with: "").isEmpty else { return }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        //print(searchBar.text)
+        guard let input = searchBar.text, !input.replacingOccurrences(of: " ", with: "").isEmpty else {
+            print(11)
+            return }
         searchBar.resignFirstResponder()
         results.removeAll()
         spinner.show(in: view)
         searchUsers(query: input)
-    } // end function searchBarButtonClicked
+        
+    }
     
     func searchUsers(query: String) {
         // check users exist
-            if fetchedUsers {
-                // if yes filter
-                filterSearchUsersResult(with: query)
-            } else {
-                // if no fetch > filter
-                DatabaseManager.shared.getAllUsers(completion: { [weak self] result in
-                    switch result {
-                    case .success(let usersCollection):
-                        print("Fetch Success!")
-                        self?.fetchedUsers = true
-                        self?.users = usersCollection
-                        self?.filterSearchUsersResult(with: query)
-                    case .failure(let error):
-                        print("Get Usres Failed: \(error)")
-                    }
-                })
-            }
-        } // end function searchUsers
+        if fetchedUsers {
+            // if yes filter
+            filterSearchUsersResult(with: query)
+        } else {
+            // if no fetch > filter
+            DatabaseManager.shared.getAllUsers(completion: { [weak self] result in
+                switch result {
+                case .success(let usersCollection):
+                    print("Fetch Success!")
+                    self?.fetchedUsers = true
+                    self?.users = usersCollection
+                    self?.filterSearchUsersResult(with: query)
+                case .failure(let error):
+                    print("Get Usres Failed: \(error)")
+                }
+            })
+        }
+    } // end function searchUsers
     
     func filterSearchUsersResult(with term: String) {
         guard fetchedUsers else { return }
@@ -137,18 +143,30 @@ extension NewConversationVC: UISearchBarDelegate {
 
 extension NewConversationVC: UITableViewDataSource, UITableViewDelegate {
     
+    // MARK: - TableView Functions
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellUser", for: indexPath)
-        cell.textLabel?.text = results[indexPath.row]["name"]
-        
-        return cell
+        let model = results[indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: CustomCellUser.identifier,
+                                                         for: indexPath) as! CustomCellUser
+                cell.configure(with: model)
+                return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        // start conversation
+                      let targetUserData = results[indexPath.row]
+
+                      dismiss(animated: true, completion: { [weak self] in
+                          self?.completion?(targetUserData)
+                      })
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            return 90
+        }
 }
