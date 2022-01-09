@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import SDWebImage
 
 class ProfileVC: UIViewController {
     
@@ -32,5 +33,32 @@ class ProfileVC: UIViewController {
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Image Attributes
+        ivProfilePic.layer.borderColor = UIColor.white.cgColor
+        ivProfilePic.layer.borderWidth = 3
+        ivProfilePic.layer.masksToBounds = true
+        ivProfilePic.layer.cornerRadius = ivProfilePic.frame.size.width/2
+    }
+    
+    // MARK: - ViewDidAppear
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return
+        }
+        
+        let emailCorrector = DatabaseManager.emailCorrector(email: email)
+        let filename = emailCorrector + "_profile_picture.png"
+        let path = "image/"+filename
+        StorageManager.shared.downloadImageURL(for: path, completion: { result in
+            switch result {
+            case .success(let url):
+                self.ivProfilePic.sd_setImage(with: url, completed: nil)
+            case .failure(let error):
+                print("Download Url Failed: \(error)")
+            }
+        })
     }
 }

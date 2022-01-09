@@ -42,6 +42,7 @@ class SignInVC: UIViewController {
             return
         }
         
+        // spinner
         spinner.show(in: view)
         
         // Firebase to log in
@@ -58,6 +59,9 @@ class SignInVC: UIViewController {
             }
             
             let user = result.user
+            
+            UserDefaults.standard.setValue(email, forKey: "email")
+            
             print("\(user) Logged in Success!")
             strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         })

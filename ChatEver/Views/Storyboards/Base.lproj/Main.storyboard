@@ -133,10 +133,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G8E-z8-e9n">
-                                <rect key="frame" x="87" y="94.5" width="240" height="129"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G8E-z8-e9n">
+                                <rect key="frame" x="142" y="94.5" width="130" height="129"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="ChD-fv-m5B"/>
+                                    <constraint firstAttribute="width" constant="130" id="ChD-fv-m5B"/>
                                     <constraint firstAttribute="height" constant="130" id="LHa-C2-tID"/>
                                 </constraints>
                             </imageView>
@@ -266,11 +266,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="owL-3l-7hD">
-                                <rect key="frame" x="82" y="148" width="250" height="140"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="owL-3l-7hD">
+                                <rect key="frame" x="137" y="148.5" width="140" height="139"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="GeH-9H-3QN"/>
-                                    <constraint firstAttribute="width" constant="250" id="wb0-x5-6An"/>
+                                    <constraint firstAttribute="width" constant="140" id="wb0-x5-6An"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="i52-XZ-x35">

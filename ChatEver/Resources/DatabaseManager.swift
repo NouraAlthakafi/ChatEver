@@ -12,6 +12,11 @@ final class DatabaseManager {
     
     static let shared = DatabaseManager()
     private let database = Database.database().reference()
+    static func emailCorrector(email: String) -> String {
+        var emailCorrector = email.replacingOccurrences(of: ".", with: "-")
+        emailCorrector = emailCorrector.replacingOccurrences(of: "@", with: "-")
+        return emailCorrector
+    }
 }
 
 // MARK: - Extentions
