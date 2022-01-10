@@ -26,6 +26,7 @@ class ProfileVC: UIViewController {
         ivProfile.layer.cornerRadius = ivProfile.frame.size.width/2
         
         title = "Settings"
+        super.viewDidAppear(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,8 +51,6 @@ class ProfileVC: UIViewController {
                 print("Download Url Failed: \(error)")
             }
         })
-        super.viewDidLoad()
-        
     }
     
     

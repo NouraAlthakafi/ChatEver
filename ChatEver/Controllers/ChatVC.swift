@@ -11,7 +11,7 @@ import InputBarAccessoryView
 
 class ChatVC: MessagesViewController {
     
-    // MARK: Var & Let
+    // MARK: Variables
     
     private var senderPhotoURL: URL?
     private var otherUserPhotoURL: URL?
@@ -215,7 +215,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
               }
         
         print("Sending: \(text)")
-        let mmessage = Message(sender: selfSender,
+        let message = Message(sender: selfSender,
                                messageId: messageId,
                                sentDate: Date(),
                                kind: .text(text))
@@ -223,7 +223,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
         if isNewConversation {
             // create convo in database
             
-            DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: mmessage, completion: { [weak self]success in
+            DatabaseManager.shared.createNewConversation(with: otherUserEmail, name: self.title ?? "User", firstMessage: message, completion: { [weak self]success in
                 if success {
                     print("message sent")
                     self?.isNewConversation = false
@@ -239,7 +239,7 @@ extension ChatVC: InputBarAccessoryViewDelegate {
             }
             
             // append to existing conversation data
-            DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: mmessage, completion: { success in
+            DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: message, completion: { success in
                 if success {
                     print("message sent")
                 }
@@ -248,7 +248,8 @@ extension ChatVC: InputBarAccessoryViewDelegate {
                 }
             })
         }
-    }
+    } // end of inputBar function
+    
     private func createMessageId() -> String? {
         // date, otherUesrEmail, senderEmail, randomInt
         guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else {
