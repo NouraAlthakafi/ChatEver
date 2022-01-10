@@ -32,9 +32,11 @@ class ProfileVC: UIViewController {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
             return
         }
+        
         guard let username = UserDefaults.standard.value(forKey: "name") as? String else {
             return
         }
+        
         lbUserName.text = username
         lbEmail.text = email
         let safeEmail = DatabaseManager.emailCorrector(emailAddress: email)
@@ -48,6 +50,7 @@ class ProfileVC: UIViewController {
                 print("Download Url Failed: \(error)")
             }
         })
+        super.viewDidLoad()
         
     }
     
