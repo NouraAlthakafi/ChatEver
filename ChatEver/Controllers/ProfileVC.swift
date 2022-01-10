@@ -45,9 +45,12 @@ class ProfileVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
-            return
-        }
+        guard let firstName = UserDefaults.standard.value(forKey: "firstName") as? String else { return }
+        guard let lastName = UserDefaults.standard.value(forKey: "lastName") as? String else { return }
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return }
+        
+        lbFullName.text = "\(firstName) \(lastName)"
+        lbEmail.text = email
         
         let emailCorrector = DatabaseManager.emailCorrector(email: email)
         let fileName = emailCorrector + "_profile_picture.png"
@@ -61,5 +64,6 @@ class ProfileVC: UIViewController {
                 print("Download Url Failed: \(error)")
             }
         })
+        super.viewDidLoad()
     }
 }

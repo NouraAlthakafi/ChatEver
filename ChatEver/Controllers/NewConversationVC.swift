@@ -150,9 +150,9 @@ extension NewConversationVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = results[indexPath.row]
-                let cell = tableView.dequeueReusableCell(withIdentifier: CustomCellUser.identifier,
+        let cell = tableView.dequeueReusableCell(withIdentifier: CustomCellUser.identifier,
                                                          for: indexPath) as! CustomCellUser
-                cell.configure(with: model)
+        cell.configure(with: model)
                 return cell
     }
     
