@@ -36,6 +36,7 @@ class ProfileVC: UIViewController {
             return
         }
         lbUserName.text = username
+        lbEmail.text = email
         let safeEmail = DatabaseManager.emailCorrector(emailAddress: email)
         let filename = safeEmail + "_profile_picture.png"
         let path = "image/"+filename
@@ -52,7 +53,6 @@ class ProfileVC: UIViewController {
     
     
     @IBAction func logoutBtnAction(_ sender: UIButton) {
-        
         let actionSheet = UIAlertController(title: "", message: "Are you sure?", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler:{ [weak self] _ in
             guard let strongSelf = self else {

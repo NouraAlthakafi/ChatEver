@@ -180,7 +180,7 @@
                                     </attributedString>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="registerBtnAction:" destination="TOu-FE-16J" eventType="touchUpInside" id="BEP-bV-tzs"/>
+                                    <action selector="btnRegisterAction:" destination="TOu-FE-16J" eventType="touchUpInside" id="Gyn-Ij-78D"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -307,11 +307,11 @@
             </objects>
             <point key="canvasLocation" x="1651" y="755"/>
         </scene>
-        <!--Item-->
+        <!--Chats-->
         <scene sceneID="Xig-09-xDz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Gpo-rG-vH2" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="On6-JF-pX9"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="message.fill" catalog="system" id="On6-JF-pX9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="LGN-Uc-6zZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
@@ -369,6 +369,7 @@
     <resources>
         <image name="chatEverLogo" width="3000" height="2000"/>
         <image name="gear.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

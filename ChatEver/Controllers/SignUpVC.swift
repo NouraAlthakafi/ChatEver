@@ -45,8 +45,8 @@ class SignUpVC: UIViewController {
         guard let firstName = tfFirstName.text, let lastName = tfLastName.text, let email = tfEmail.text , let nPass = tfPassword.text, !firstName.isEmpty, !lastName.isEmpty , !email.isEmpty, !nPass.isEmpty else {
             alertRegisterError()
             return
-        }
-        
+    }
+    
         // Firebase Login
         DatabaseManager.shared.userExistence(with: email, completion: { [weak self] exists in
             guard let strongSelf = self else { return }
