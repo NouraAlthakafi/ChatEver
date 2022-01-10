@@ -8,9 +8,7 @@
 import Foundation
 import UIKit
 
-// MARK: - UI Design
 extension UIView {
-
     public var width: CGFloat {
         return frame.size.width
     }
@@ -36,7 +34,6 @@ extension UIView {
     }
 }
 
-// MARK: - Notifications
 extension Notification.Name {
     /// Notificaiton  when user logs in
     static let didLogInNotification = Notification.Name("didLogInNotification")

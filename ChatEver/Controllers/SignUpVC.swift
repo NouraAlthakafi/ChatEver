@@ -1,8 +1,8 @@
 //
-//  SignUpViewController.swift
+//  SignUpVC.swift
 //  ChatEver
 //
-//  Created by administrator on 04/01/2022.
+//  Created by administrator on 06/01/2022.
 //
 
 import UIKit
@@ -11,101 +11,26 @@ import JGProgressHUD
 
 class SignUpVC: UIViewController {
     
-    // MARK: - Tools
-    private let spinner = JGProgressHUD(style: .dark)
-    
     // MARK: - Outlets
-    @IBOutlet weak var ivProfilePic: UIImageView!
+    @IBOutlet weak var ivProfile: UIImageView!
     @IBOutlet weak var tfFirstName: UITextField!
     @IBOutlet weak var tfLastName: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var tfPassword: UITextField!
-    @IBOutlet weak var btnRegister: UIButton!
-    
-    // MARK: - Actions
-    @IBAction func btnRegisterAction(_ sender: UIButton) {
-        // closing keyboard
-        tfFirstName.resignFirstResponder()
-        tfLastName.resignFirstResponder()
-        tfEmail.resignFirstResponder()
-        tfPassword.resignFirstResponder()
-        
-        guard let firstName = tfFirstName.text, let lastName = tfLastName.text, let email = tfEmail.text, let password = tfPassword.text, !firstName.isEmpty, !lastName.isEmpty, !email.isEmpty, !password.isEmpty else {
-            alertLogInError()
-            return
-        }
-        
-        guard let password = tfPassword.text, password.count >= 6  else {
-                    alretPasswordError()
-                    return
-                }
-        
-        spinner.show(in: view)
-        
-        // Firebase to create account
-        DatabaseManager.shared.validateUserExistence(with: email, completion: { [weak self] exists in
-            guard let strongSelf = self else { return }
-            
-            DispatchQueue.main.async {
-                strongSelf.spinner.dismiss()
-            }
-            
-            guard !exists else {
-                strongSelf.alretUserExist()
-                return
-            }
-            
-            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
-                guard authResult != nil, error == nil else {
-                    print("User Creating Error: \(String(describing: error?.localizedDescription))")
-                    return
-                }
-                
-                let chatEverUser = ChatEverUser(firstName: firstName, lastName: lastName, email: email)
-                DatabaseManager.shared.insertUser(with: chatEverUser, completion: { success in
-                    if success {
-                        // upload profile picture
-                        guard let picture = strongSelf.ivProfilePic.image,
-                              let data = picture.pngData() else {
-                                  return
-                              }
-                        let fileName = chatEverUser.profilePic
-                        StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName, completion: { result in
-                            switch result {
-                            case.success(let downloadUrl):
-                                UserDefaults.standard.setValue(downloadUrl, forKey: "profile_picture_url")
-                                print(downloadUrl)
-                            case.failure(let error):
-                                print("Storage Manager Error \(error)")
-                            }
-                        })
-                    }
-                })
-                UserDefaults.standard.setValue(email, forKey: "email")
-                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
-            })
-        })
-    }
     
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        // Do any additional setup after loading the view.
+        ivProfile.layer.cornerRadius = ivProfile.frame.size.width/2
         title = "Create Account"
-        
-        let tappedIVProfile = UITapGestureRecognizer(target: self, action: #selector(self.presentPhotoActionSheet))
-        ivProfilePic.isUserInteractionEnabled = true
-        ivProfilePic.addGestureRecognizer(tappedIVProfile)
-        
-        // Image Attributes
-        ivProfilePic.layer.borderColor = UIColor.white.cgColor
-        ivProfilePic.layer.borderWidth = 3
-        ivProfilePic.layer.masksToBounds = true
-        ivProfilePic.layer.cornerRadius = ivProfilePic.frame.size.width/2
+        view.backgroundColor = .white
+        ivProfile.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.presentPhotoActionSheet))
+        ivProfile.addGestureRecognizer(gesture)
     }
     
-    // MARK: - ViewDidAppear
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -115,39 +40,87 @@ class SignUpVC: UIViewController {
         tfAttributes(tf: tfPassword)
     }
     
-    // MARK: - Alerts
-    func alretUserExist() {
-        let alert = UIAlertController(title: "Error", message: "This account is already registered!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
-        present(alert, animated: true)
+    // MARK: Buttons Actions
+    @IBAction func btnRegisterAction(_ sender: UIButton) {
+        guard let firstName = tfFirstName.text, let lastName = tfLastName.text, let email = tfEmail.text , let nPass = tfPassword.text, !firstName.isEmpty, !lastName.isEmpty , !email.isEmpty, !nPass.isEmpty else {
+            alertRegisterError()
+            return
+        }
+        
+        // Firebase Login
+        DatabaseManager.shared.userExistence(with: email, completion: { [weak self] exists in
+            guard let strongSelf = self else { return }
+            
+            guard !exists else {
+                // user already exists
+                strongSelf.alretPasswordError()
+                return
+            }
+            Auth.auth().createUser(withEmail: email, password: nPass, completion: { authResult, error in
+                
+                guard authResult != nil, error == nil else{
+                    print("Error Creating User")
+                    return
+                }
+                UserDefaults.standard.setValue(email, forKey: "email")
+                UserDefaults.standard.setValue("\(firstName) \(lastName)", forKey: "name")
+                
+                let chatUser = ChatEverUser(firstName: firstName, lastName: lastName, emailAddress: email)
+                DatabaseManager.shared.insertUser(with: chatUser,completion: { success in
+                    if success {
+                        //upload image
+                        guard let image = strongSelf.ivProfile.image,
+                              let data = image.pngData() else {
+                                  return
+                              }
+                        let fileName = chatUser.profilePictureFileName
+                        StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName, completion: { result in
+                            switch result{
+                            case.success(let downloadUrl):
+                                UserDefaults.standard.setValue(downloadUrl, forKey: "profile_picture_url")
+                                print(downloadUrl)
+                            case.failure(let error):
+                                print("Storage manger error\(error)")
+                            }
+                            
+                        })
+                        
+                    }
+                })
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            })
+        })
     }
     
-    func alertLogInError() {
-        let alert = UIAlertController(title: "Error", message: "Please, enter all required fields to create a new account!", preferredStyle: .alert)
+    
+    // MARK: Alerts
+    func alertRegisterError() {
+        let alert = UIAlertController(title: "Error", message: "Please, enter all required fields to log in!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
         present(alert, animated: true)
     }
     
     func alretPasswordError() {
-        let alert = UIAlertController(title: "Error", message: "Password must be 6 characters at least.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
-        present(alert, animated: true)
-    }
-    
-    // MARK: - Attributes Functions
-    func tfAttributes(tf: UITextField) {
-        tf.layer.cornerRadius = 10
-        tf.layer.borderWidth = 1
-        tf.layer.borderColor = UIColor.lightGray.cgColor
-        tf.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
-        tf.leftViewMode = .always
-    }
-}
+            let alert = UIAlertController(title: "Error", message: "Password must be 6 characters at least.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: nil))
+            present(alert, animated: true)
+        }
+        
+        // MARK: - Attributes Functions
+        func tfAttributes(tf: UITextField) {
+            tf.layer.cornerRadius = 10
+            tf.layer.borderWidth = 1
+            tf.layer.borderColor = UIColor.lightGray.cgColor
+            tf.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+            tf.leftViewMode = .always
+        }
+} // End of class
 
-// MARK: - Extensions
+// MARK: Extensions
 extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // get results of user taking picture or selecting from camera roll
-    @objc func presentPhotoActionSheet() {
+    
+    @objc func presentPhotoActionSheet(){
         let actionSheet = UIAlertController(title: "Profile Picture", message: "How would you like to select a picture?", preferredStyle: .actionSheet)
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { [weak self] _ in
@@ -184,7 +157,7 @@ extension SignUpVC: UIImagePickerControllerDelegate, UINavigationControllerDeleg
             return
         }
         
-        self.ivProfilePic.image = selectedImage
+        self.ivProfile.image = selectedImage
         
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

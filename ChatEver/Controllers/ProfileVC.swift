@@ -11,59 +11,73 @@ import SDWebImage
 
 class ProfileVC: UIViewController {
     
-    // MARK: - Outlets
-    @IBOutlet weak var ivProfilePic: UIImageView!
-    @IBOutlet weak var lbFullName: UILabel!
+    @IBOutlet weak var ivProfile: UIImageView!
+    
+    @IBOutlet weak var lbUserName: UILabel!
+    
     @IBOutlet weak var lbEmail: UILabel!
-    @IBOutlet weak var btnLogOut: UIButton!
     
-    // MARK: - Actions
-    @IBAction func btnLogOutAction(_ sender: UIButton) {
-        do {
-            try FirebaseAuth.Auth.auth().signOut()
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            self.present(nav, animated: false)
-        } catch {
-            print("Error Log Out User: \(error.localizedDescription)")
-        }
-    }
-    
-    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Image Attributes
-        ivProfilePic.layer.borderColor = UIColor.white.cgColor
-        ivProfilePic.layer.borderWidth = 3
-        ivProfilePic.layer.masksToBounds = true
-        ivProfilePic.layer.cornerRadius = ivProfilePic.frame.size.width/2
+        ivProfile.layer.borderColor = UIColor.white.cgColor
+        ivProfile.layer.borderWidth = 3
+        ivProfile.layer.masksToBounds = true
+        ivProfile.layer.cornerRadius = ivProfile.frame.size.width/2
+        
+        title = "Settings"
     }
     
-    // MARK: - ViewDidAppear
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        guard let firstName = UserDefaults.standard.value(forKey: "firstName") as? String else { return }
-        guard let lastName = UserDefaults.standard.value(forKey: "lastName") as? String else { return }
-        guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return }
-        
-        lbFullName.text = "\(firstName) \(lastName)"
-        lbEmail.text = email
-        
-        let emailCorrector = DatabaseManager.emailCorrector(email: email)
-        let fileName = emailCorrector + "_profile_picture.png"
-        let path = "image/"+fileName
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return
+        }
+        guard let username = UserDefaults.standard.value(forKey: "name") as? String else {
+            return
+        }
+        lbUserName.text = username
+        let safeEmail = DatabaseManager.emailCorrector(emailAddress: email)
+        let filename = safeEmail + "_profile_picture.png"
+        let path = "image/"+filename
         StorageManager.shared.downloadImageURL(for: path, completion: { result in
             switch result {
             case .success(let url):
-                print("aa")
-                    self.ivProfilePic.sd_setImage(with: url, completed: nil)
+                self.ivProfile.sd_setImage(with: url, completed: nil)
             case .failure(let error):
                 print("Download Url Failed: \(error)")
             }
         })
-        super.viewDidLoad()
+        
+    }
+    
+    
+    @IBAction func logoutBtnAction(_ sender: UIButton) {
+        
+        let actionSheet = UIAlertController(title: "", message: "Are you sure?", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler:{ [weak self] _ in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            UserDefaults.standard.setValue(nil, forKey: "email")
+            UserDefaults.standard.setValue(nil, forKey: "name")
+            
+            do {
+                try FirebaseAuth.Auth.auth().signOut()
+                let vc = strongSelf.storyboard?.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+                let nav = UINavigationController(rootViewController: vc)
+                nav.modalPresentationStyle = .fullScreen
+                
+                strongSelf.present(nav, animated: true)
+                
+            } catch {
+                print("Error Log Out User: \(error.localizedDescription)")
+            }
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(actionSheet , animated: true)
+        
+        
     }
 }

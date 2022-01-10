@@ -13,14 +13,16 @@
 		C31EAE812789696000BFFD43 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = C31EAE802789696000BFFD43 /* JGProgressHUD */; };
 		C31EAE84278969A400BFFD43 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = C31EAE83278969A400BFFD43 /* SDWebImage */; };
 		C31EAE86278969A400BFFD43 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C31EAE85278969A400BFFD43 /* SDWebImageMapKit */; };
-		C31EAE8A27896D6100BFFD43 /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAE8927896D6100BFFD43 /* MessagesVC.swift */; };
+		C31EAE8A27896D6100BFFD43 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAE8927896D6100BFFD43 /* ChatVC.swift */; };
 		C31EAE8E27897C6E00BFFD43 /* NewConversationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAE8D27897C6E00BFFD43 /* NewConversationVC.swift */; };
 		C31EAE91278A2E4600BFFD43 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = C31EAE90278A2E4600BFFD43 /* FacebookLogin */; };
-		C31EAE93278A352100BFFD43 /* Storage Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAE92278A352100BFFD43 /* Storage Manager.swift */; };
+		C31EAE93278A352100BFFD43 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAE92278A352100BFFD43 /* StorageManager.swift */; };
 		C31EAE95278A4C1700BFFD43 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAE94278A4C1700BFFD43 /* Extentions.swift */; };
-		C31EAEA1278B906900BFFD43 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAEA0278B906900BFFD43 /* Model.swift */; };
 		C31EAEA4278B9A4800BFFD43 /* CustomCellFriend.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAEA3278B9A4800BFFD43 /* CustomCellFriend.swift */; };
-		C31EAEA6278B9DD000BFFD43 /* CustomCellUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAEA5278B9DD000BFFD43 /* CustomCellUser.swift */; };
+		C31EAEA6278B9DD000BFFD43 /* NewConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAEA5278B9DD000BFFD43 /* NewConversationCell.swift */; };
+		C31EAEA8278BE92100BFFD43 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAEA7278BE92100BFFD43 /* Conversation.swift */; };
+		C31EAEAA278BE9FD00BFFD43 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAEA9278BE9FC00BFFD43 /* ProfileViewModel.swift */; };
+		C31EAEAC278BEA3200BFFD43 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C31EAEAB278BEA3200BFFD43 /* SearchResult.swift */; };
 		C36B23C92785C2FC0001E9B6 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23C82785C2FC0001E9B6 /* FirebaseAnalytics */; };
 		C36B23CB2785C2FC0001E9B6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23CA2785C2FC0001E9B6 /* FirebaseAuth */; };
 		C36B23CD2785C2FC0001E9B6 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C36B23CC2785C2FC0001E9B6 /* FirebaseDatabase */; };
@@ -35,17 +37,19 @@
 		C37482962784430E007D2F74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C37482952784430E007D2F74 /* Assets.xcassets */; };
 		C37482992784430E007D2F74 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37482972784430E007D2F74 /* LaunchScreen.storyboard */; };
 		C37482A5278444A0007D2F74 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37482A4278444A0007D2F74 /* SignUpVC.swift */; };
-		C37482A727846A75007D2F74 /* ConversationListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37482A627846A75007D2F74 /* ConversationListTVC.swift */; };
+		C37482A727846A75007D2F74 /* ConversationsListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37482A627846A75007D2F74 /* ConversationsListVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C31EAE8927896D6100BFFD43 /* MessagesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesVC.swift; sourceTree = "<group>"; };
+		C31EAE8927896D6100BFFD43 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		C31EAE8D27897C6E00BFFD43 /* NewConversationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationVC.swift; sourceTree = "<group>"; };
-		C31EAE92278A352100BFFD43 /* Storage Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage Manager.swift"; sourceTree = "<group>"; };
+		C31EAE92278A352100BFFD43 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		C31EAE94278A4C1700BFFD43 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
-		C31EAEA0278B906900BFFD43 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		C31EAEA3278B9A4800BFFD43 /* CustomCellFriend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellFriend.swift; sourceTree = "<group>"; };
-		C31EAEA5278B9DD000BFFD43 /* CustomCellUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellUser.swift; sourceTree = "<group>"; };
+		C31EAEA5278B9DD000BFFD43 /* NewConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationCell.swift; sourceTree = "<group>"; };
+		C31EAEA7278BE92100BFFD43 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		C31EAEA9278BE9FC00BFFD43 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C31EAEAB278BEA3200BFFD43 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		C36B23D22785C75A0001E9B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C36B23D42785FFEC0001E9B6 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		C36B23D62786E2F90001E9B6 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
@@ -58,7 +62,7 @@
 		C37482982784430E007D2F74 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C374829A2784430E007D2F74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C37482A4278444A0007D2F74 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
-		C37482A627846A75007D2F74 /* ConversationListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationListTVC.swift; sourceTree = "<group>"; };
+		C37482A627846A75007D2F74 /* ConversationsListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsListVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,24 +90,26 @@
 		C31EAE96278B6FC800BFFD43 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				C31EAE99278B70CF00BFFD43 /* Models */,
+				C31EAE99278B70CF00BFFD43 /* Model */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		C31EAE99278B70CF00BFFD43 /* Models */ = {
+		C31EAE99278B70CF00BFFD43 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C31EAEA0278B906900BFFD43 /* Model.swift */,
+				C31EAEA7278BE92100BFFD43 /* Conversation.swift */,
+				C31EAEA9278BE9FC00BFFD43 /* ProfileViewModel.swift */,
+				C31EAEAB278BEA3200BFFD43 /* SearchResult.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		C31EAEA2278B9A0D00BFFD43 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
 				C31EAEA3278B9A4800BFFD43 /* CustomCellFriend.swift */,
-				C31EAEA5278B9DD000BFFD43 /* CustomCellUser.swift */,
+				C31EAEA5278B9DD000BFFD43 /* NewConversationCell.swift */,
 			);
 			path = CustomCells;
 			sourceTree = "<group>";
@@ -144,7 +150,7 @@
 				C37482892784430C007D2F74 /* AppDelegate.swift */,
 				C374828B2784430C007D2F74 /* SceneDelegate.swift */,
 				C36B23D42785FFEC0001E9B6 /* DatabaseManager.swift */,
-				C31EAE92278A352100BFFD43 /* Storage Manager.swift */,
+				C31EAE92278A352100BFFD43 /* StorageManager.swift */,
 				C31EAE94278A4C1700BFFD43 /* Extentions.swift */,
 			);
 			path = Resources;
@@ -153,11 +159,11 @@
 		C37482A1278443AE007D2F74 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				C37482A627846A75007D2F74 /* ConversationListTVC.swift */,
+				C37482A627846A75007D2F74 /* ConversationsListVC.swift */,
 				C374828D2784430C007D2F74 /* SignInVC.swift */,
 				C37482A4278444A0007D2F74 /* SignUpVC.swift */,
 				C36B23D62786E2F90001E9B6 /* ProfileVC.swift */,
-				C31EAE8927896D6100BFFD43 /* MessagesVC.swift */,
+				C31EAE8927896D6100BFFD43 /* ChatVC.swift */,
 				C31EAE8D27897C6E00BFFD43 /* NewConversationVC.swift */,
 			);
 			path = Controllers;
@@ -275,14 +281,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C31EAE8E27897C6E00BFFD43 /* NewConversationVC.swift in Sources */,
-				C31EAE8A27896D6100BFFD43 /* MessagesVC.swift in Sources */,
-				C31EAE93278A352100BFFD43 /* Storage Manager.swift in Sources */,
+				C31EAE8A27896D6100BFFD43 /* ChatVC.swift in Sources */,
+				C31EAEAC278BEA3200BFFD43 /* SearchResult.swift in Sources */,
+				C31EAE93278A352100BFFD43 /* StorageManager.swift in Sources */,
 				C31EAE95278A4C1700BFFD43 /* Extentions.swift in Sources */,
-				C37482A727846A75007D2F74 /* ConversationListTVC.swift in Sources */,
-				C31EAEA6278B9DD000BFFD43 /* CustomCellUser.swift in Sources */,
+				C31EAEA8278BE92100BFFD43 /* Conversation.swift in Sources */,
+				C37482A727846A75007D2F74 /* ConversationsListVC.swift in Sources */,
+				C31EAEA6278B9DD000BFFD43 /* NewConversationCell.swift in Sources */,
 				C374828E2784430C007D2F74 /* SignInVC.swift in Sources */,
 				C36B23D72786E2F90001E9B6 /* ProfileVC.swift in Sources */,
-				C31EAEA1278B906900BFFD43 /* Model.swift in Sources */,
+				C31EAEAA278BE9FD00BFFD43 /* ProfileViewModel.swift in Sources */,
 				C36B23D52785FFEC0001E9B6 /* DatabaseManager.swift in Sources */,
 				C31EAEA4278B9A4800BFFD43 /* CustomCellFriend.swift in Sources */,
 				C374828A2784430C007D2F74 /* AppDelegate.swift in Sources */,
